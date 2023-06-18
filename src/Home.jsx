@@ -2,7 +2,7 @@ import React from "react";
 import Popup from "reactjs-popup";
 import "reactjs-popup/dist/index.css";
 import "./App.css";
-import { v4 as uuidv4 } from 'uuid';
+import { v4 as uuidv4 } from "uuid";
 import { Link } from "react-router-dom";
 
 import { useData } from "./context/data-context";
@@ -10,16 +10,12 @@ import { useHabit } from "./context/habit-context";
 import { HabitCard } from "./HabitCard";
 
 export function Home() {
- 
-    const { habit, habitHandler, initialHabitDetailsState, setHabit } = useData(); 
-    const { habitData, setHabitData} = useHabit(); 
-
-
+  const { habit, habitHandler, initialHabitDetailsState, setHabit } = useData();
+  const { habitData, setHabitData } = useHabit();
 
   return (
     <>
       <h1> Habit Tracker </h1>
-
 
       <Popup
         trigger={<button className="button"> Add a habit </button>}
@@ -51,10 +47,8 @@ export function Home() {
                   {" "}
                   Repeat:
                   <select name="repeat" onChange={habitHandler}>
-                  <option> Select </option>
-                    <option value="daily">
-                      Daily
-                    </option>
+                    <option> Select </option>
+                    <option value="daily">Daily</option>
                     <option value="monthly">Monthly</option>
                     <option value="weekly">Weekly</option>
                   </select>
@@ -66,10 +60,8 @@ export function Home() {
                   {" "}
                   Goal:
                   <select name="goal" onChange={habitHandler}>
-                  <option> Select </option>
-                    <option value="once-daily">
-                      Once daily
-                    </option>
+                    <option> Select </option>
+                    <option value="once-daily">Once daily</option>
                     <option value="twice-daily">Twice Daily</option>
                     <option value="thrice-daily">Thrice Daily</option>
                   </select>
@@ -82,11 +74,9 @@ export function Home() {
                   {" "}
                   Time of Day:
                   <select name="time-of-day" onChange={habitHandler}>
-                  <option> Select </option>
+                    <option> Select </option>
                     <option value="6:00am">6:00 AM</option>
-                    <option value="6:30am">
-                      6:30AM
-                    </option>
+                    <option value="6:30am">6:30AM</option>
                     <option value="7:00am">7:00 AM</option>
                   </select>
                 </label>
@@ -99,9 +89,7 @@ export function Home() {
                   <select name="start-date" onChange={habitHandler}>
                     <option> Select </option>
                     <option value="today">Today</option>
-                    <option value="tomorrow">
-                      Tomorrow
-                    </option>
+                    <option value="tomorrow">Tomorrow</option>
                     <option value="dayafter-tom">Day after tomorrow</option>
                   </select>
                 </label>
@@ -126,30 +114,24 @@ export function Home() {
               <button
                 className="button"
                 onClick={() => {
-                  console.log("details saved ", {...habit, id:uuidv4()});
-                  setHabitData([...habitData,{...habit, id:uuidv4()}])
-                  setHabit(initialHabitDetailsState)
+                  console.log("details saved ", { ...habit, id: uuidv4() });
+                  setHabitData([...habitData, { ...habit, id: uuidv4() }]);
+                  setHabit(initialHabitDetailsState);
                   close();
                 }}
               >
                 Save Habit details
               </button>
             </div>
-
           </div>
         )}
       </Popup>
 
-      <HabitCard /> 
+      <HabitCard />
 
       <Link to="/archive"> Go To Archive Page </Link>
 
-
-{/*  Show details   */}
-      
-
-
-
+      {/*  Show details   */}
     </>
   );
 }

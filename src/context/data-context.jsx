@@ -4,21 +4,19 @@ import { useState } from "react";
 export const DataContext = createContext();
 
 export function DataProvider({ children }) {
-  
   const initialHabitDetailsState = {
     name: "",
     repeat: "",
     goal: "",
     timeofDay: "",
     startDate: "",
-  }   
-
+  };
 
   const [habit, setHabit] = useState(initialHabitDetailsState);
 
   const habitHandler = (event) => {
     const habitFormDetailName = event.target.name;
-    console.log("detail name", habitFormDetailName)
+    console.log("detail name", habitFormDetailName);
 
     switch (habitFormDetailName) {
       case "habit-name":
@@ -41,15 +39,16 @@ export function DataProvider({ children }) {
         setHabit({ ...habit, startDate: event.target.value });
         break;
 
-       default:
+      default:
         console.log("end of switch");
-        break; 
-    
+        break;
     }
   };
 
   return (
-    <DataContext.Provider value={{ habit, setHabit, habitHandler, initialHabitDetailsState }}>
+    <DataContext.Provider
+      value={{ habit, setHabit, habitHandler, initialHabitDetailsState }}
+    >
       {children}
     </DataContext.Provider>
   );
