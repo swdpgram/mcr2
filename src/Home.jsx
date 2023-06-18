@@ -2,9 +2,12 @@ import React from "react";
 import Popup from "reactjs-popup";
 import "reactjs-popup/dist/index.css";
 import "./App.css";
+import { v4 as uuidv4 } from 'uuid';
+import { Link } from "react-router-dom";
 
 import { useData } from "./context/data-context";
 import { useHabit } from "./context/habit-context";
+import { HabitCard } from "./HabitCard";
 
 export function Home() {
  
@@ -122,8 +125,8 @@ export function Home() {
               <button
                 className="button"
                 onClick={() => {
-                  console.log("details saved ", habit);
-                  setHabitData([...habitData,habit])
+                  console.log("details saved ", {...habit, id:uuidv4()});
+                  setHabitData([...habitData,{...habit, id:uuidv4()}])
                   setHabit(initialHabitDetailsState)
                   close();
                 }}
@@ -136,15 +139,9 @@ export function Home() {
         )}
       </Popup>
 
-      { 
-      habitData?.map((item,index)=> { 
-        return (
-            <div key={index}>
-            <p> {item.name} </p>
-            </div> 
-        ); 
-      })
-      }
+      <HabitCard /> 
+
+      <Link to="/archive"> Go To Archive Page </Link>
     </>
   );
 }
