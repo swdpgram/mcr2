@@ -1,0 +1,95 @@
+GFG 
+<div>
+            <h4>Popup - GeeksforGeeks</h4>
+            <Popup trigger=
+                {<button> Click to open popup </button>}
+                position="right center">
+                <div>Add New Habit here </div>
+                <p> Name: </p> 
+                <textarea> </textarea>
+                <button>Add Habit</button>
+            </Popup>
+        </div>
+
+----------
+
+
+<div>
+            <h4>Popup - GeeksforGeeks</h4>
+            <Popup trigger=
+                {<button> Click to open modal </button>}
+                modal nested>
+                {
+                    close => (
+                        <div className='modal'>
+                            <div className='content'>
+                                Welcome to GFG!!!
+                            </div>
+                            <div>
+                                <button onClick=
+                                    {() => close()}>
+                                        Close modal
+                                </button>
+                            </div>
+                        </div>
+                    )
+                }
+            </Popup>
+        </div>
+
+-------------
+
+ <Popup
+        trigger={<button className="button"> Open Modal </button>}
+        modal
+        nested
+      >
+        {(close) => (
+          <div className="modal">
+            <button className="close" onClick={close}>
+              &times;
+            </button>
+            <div className="header"> Add the Habit </div>
+            <div className="content">
+              {" "}
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque, a
+              nostrum. Dolorem, repellat quidem ut, minima sint vel eveniet
+              quibusdam voluptates delectus doloremque, explicabo tempore dicta
+              adipisci fugit amet dignissimos?
+              <br />
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+              Consequatur sit commodi beatae optio voluptatum sed eius cumque,
+              delectus saepe repudiandae explicabo nemo nam libero ad,
+              doloribus, voluptas rem alias. Vitae?
+            </div>
+            <div className="actions">
+              <Popup
+                trigger={<button className="button"> Trigger </button>}
+                position="top center"
+                nested
+              >
+                <span>
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                  Beatae magni omnis delectus nemo, maxime molestiae dolorem
+                  numquam mollitia, voluptate ea, accusamus excepturi deleniti
+                  ratione sapiente! Laudantium, aperiam doloribus. Odit, aut.
+                </span>
+              </Popup>
+              <button
+                className="button"
+                onClick={() => {
+                  console.log("modal closed ");
+                  close();
+                }}
+              >
+                close modal
+              </button>
+            </div>
+          </div>
+        )}
+      </Popup>
+
+
+
+------------------------
+
