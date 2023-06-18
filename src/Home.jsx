@@ -20,6 +20,7 @@ export function Home() {
     <>
       <h1> Habit Tracker </h1>
 
+
       <Popup
         trigger={<button className="button"> Add a habit </button>}
         modal
@@ -142,6 +143,13 @@ export function Home() {
       <HabitCard /> 
 
       <Link to="/archive"> Go To Archive Page </Link>
+
+
+{/*  Show details   */}
+      
+
+
+
     </>
   );
 }
